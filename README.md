@@ -32,7 +32,6 @@ module "aws_eks_addons" {
 | Name | Version |
 |------|---------|
 | aws | n/a |
-| null | n/a |
 
 ## Modules
 
@@ -47,7 +46,6 @@ module "aws_eks_addons" {
 | [aws_eks_addon](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eks_addon) |
 | [aws_iam_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) |
 | [aws_iam_policy_document](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) |
-| [null_resource](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) |
 
 ## Inputs
 

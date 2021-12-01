@@ -57,22 +57,6 @@ resource "aws_eks_addon" "vpc_cni" {
   tags = var.addon_tags
 }
 
-resource "null_resource" "set_prefix_delegation_target" {
-  count = var.addon_create_vpc_cni ? 1 : 0
-  depends_on = [aws_eks_addon.vpc_cni]
-
-  provisioner "local-exec" {
-    command = <<-EOT
-      aws eks --region eu-west-2 update-kubeconfig --name ${var.cluster_name}
-      kubectl set env daemonset aws-node -n kube-system ENABLE_PREFIX_DELEGATION=true
-      kubectl set env daemonset aws-node -n kube-system WARM_PREFIX_TARGET=1
-    EOT
-  }
-  triggers = {
-    aws_eks_addon_cni_id = aws_eks_addon.vpc_cni[0].id
-  }
-}
-
 ################################
 # EKS Cluster kube proxy addon #
 ################################

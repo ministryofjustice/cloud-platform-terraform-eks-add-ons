@@ -31,23 +31,36 @@ module "aws_eks_addons" {
 
 | Name | Version |
 |------|---------|
-| helm | n/a |
-| null | n/a |
+| aws | n/a |
 
 ## Modules
 
-No Modules.
+| Name | Source | Version |
+|------|--------|---------|
+| irsa_vpc_cni | terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc | 4.6.0 |
 
 ## Resources
 
 | Name |
 |------|
-| [helm_release](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) |
-| [null_resource](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) |
+| [aws_eks_addon](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eks_addon) |
+| [aws_iam_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) |
+| [aws_iam_policy_document](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) |
 
 ## Inputs
 
-No input.
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| addon\_coredns\_version | Version for addon\_coredns\_version | `string` | `""` | no |
+| addon\_create\_coredns | Create coredns addon | `bool` | `false` | no |
+| addon\_create\_kube\_proxy | Create kube\_proxy addon | `bool` | `false` | no |
+| addon\_create\_vpc\_cni | Create vpc\_cni addon | `bool` | `false` | no |
+| addon\_kube\_proxy\_version | Version for addon\_kube\_proxy\_version | `string` | `""` | no |
+| addon\_tags | Cluster addon tags | `map(string)` | `{}` | no |
+| addon\_vpc\_cni\_version | Version for addon\_create\_vpc\_cni | `string` | `"v1.9.3-eksbuild.1"` | no |
+| cluster\_name | Kubernetes cluster name - used to name (id) the auth0 resources | `any` | n/a | yes |
+| cluster\_oidc\_issuer\_url | Used to create the IAM OIDC role | `string` | `""` | no |
+| eks\_cluster\_id | trigger for null resource using eks\_cluster\_id | `any` | n/a | yes |
 
 ## Outputs
 

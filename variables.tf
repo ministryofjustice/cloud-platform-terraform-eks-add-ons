@@ -31,13 +31,12 @@ variable "addon_vpc_cni_version" {
 }
 
 variable "addon_kube_proxy_version" {
-  default     = ""
+  default     = "v1.19.6-eksbuild.1"
   description = "Version for addon_kube_proxy_version"
 }
 
-
 variable "addon_coredns_version" {
-  default     = ""
+  default     = "v1.8.0-eksbuild.1"
   description = "Version for addon_coredns_version"
 }
 

@@ -21,37 +21,7 @@ module "aws_eks_addons" {
 }
 ```
 <!--- BEGIN_TF_DOCS --->
-## Requirements
 
-| Name | Version |
-|------|---------|
-| terraform | >= 0.14 |
-
-## Providers
-
-| Name | Version |
-|------|---------|
-| helm | n/a |
-| null | n/a |
-
-## Modules
-
-No Modules.
-
-## Resources
-
-| Name |
-|------|
-| [helm_release](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) |
-| [null_resource](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) |
-
-## Inputs
-
-No input.
-
-## Outputs
-
-No output.
 
 <!--- END_TF_DOCS --->
 

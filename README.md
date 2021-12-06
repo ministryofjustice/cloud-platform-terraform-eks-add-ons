@@ -52,9 +52,9 @@ module "aws_eks_addons" {
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | addon\_coredns\_version | Version for addon\_coredns\_version | `string` | `"v1.8.0-eksbuild.1"` | no |
-| addon\_create\_coredns | Create coredns addon | `bool` | `false` | no |
-| addon\_create\_kube\_proxy | Create kube\_proxy addon | `bool` | `false` | no |
-| addon\_create\_vpc\_cni | Create vpc\_cni addon | `bool` | `false` | no |
+| addon\_create\_coredns | Create coredns addon | `bool` | `true` | no |
+| addon\_create\_kube\_proxy | Create kube\_proxy addon | `bool` | `true` | no |
+| addon\_create\_vpc\_cni | Create vpc\_cni addon | `bool` | `true` | no |
 | addon\_kube\_proxy\_version | Version for addon\_kube\_proxy\_version | `string` | `"v1.19.8-eksbuild.1"` | no |
 | addon\_tags | Cluster addon tags | `map(string)` | `{}` | no |
 | addon\_vpc\_cni\_version | Version for addon\_create\_vpc\_cni | `string` | `"v1.7.5-eksbuild.2"` | no |

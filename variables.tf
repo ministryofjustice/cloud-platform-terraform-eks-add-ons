@@ -10,19 +10,19 @@ variable "cluster_name" {
 variable "addon_create_vpc_cni" {
   description = "Create vpc_cni addon"
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "addon_create_kube_proxy" {
   description = "Create kube_proxy addon"
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "addon_create_coredns" {
   description = "Create coredns addon"
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "addon_vpc_cni_version" {

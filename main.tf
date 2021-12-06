@@ -8,7 +8,7 @@ module "irsa_vpc_cni" {
   create_role                   = var.addon_create_vpc_cni ? true : false
   role_name                     = "${var.cluster_name}-vpc-cni"
   provider_url                  = var.cluster_oidc_issuer_url
-  role_policy_arns              = [aws_iam_policy.vpc_cni[0].arn, "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"]
+  role_policy_arns              = var.addon_create_vpc_cni && length(aws_iam_policy.vpc_cni.*) >=1 ? concat(aws_iam_policy.vpc_cni.*.arn, ["arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"]) : [""]
   oidc_fully_qualified_subjects = ["system:serviceaccount:kube-system:aws-node"]
 }
 

@@ -73,7 +73,7 @@ resource "null_resource" "set_prefix_delegation_target" {
     EOT
   }
   triggers = {
-    aws_eks_addon_cni_id = aws_eks_addon.vpc_cni.id
+    aws_eks_addon_cni_id = aws_eks_addon.vpc_cni[0].id
   }
 }
 

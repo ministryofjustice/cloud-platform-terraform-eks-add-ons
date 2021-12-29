@@ -58,6 +58,25 @@ resource "aws_eks_addon" "vpc_cni" {
   tags = var.addon_tags
 }
 
+# Configure cni daemonset to support higher pod density https://docs.aws.amazon.com/eks/latest/userguide/cni-increase-ip-addresses.html
+
+# This null_resource can be removed, when "aws_eks_addon" resource support configuration for addons
+# 0r this issue https://github.com/hashicorp/terraform-provider-kubernetes/issues/723 to patch deployment
+resource "null_resource" "set_prefix_delegation_target" {
+  depends_on = [ aws_eks_addon.vpc_cni ]
+
+  provisioner "local-exec" {
+    command = <<-EOT
+      aws eks --region eu-west-2 update-kubeconfig --name ${var.cluster_name}
+      kubectl set env daemonset aws-node -n kube-system ENABLE_PREFIX_DELEGATION=true
+      kubectl set env daemonset aws-node -n kube-system WARM_PREFIX_TARGET=1
+    EOT
+  }
+  triggers = {
+    aws_eks_addon_cni_id = aws_eks_addon.vpc_cni[0].id
+  }
+}
+
 ################################
 # EKS Cluster kube proxy addon #
 ################################

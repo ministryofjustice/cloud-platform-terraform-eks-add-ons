@@ -59,7 +59,7 @@ module "aws_eks_addons" {
 | addon\_create\_vpc\_cni | Create vpc\_cni addon | `bool` | `true` | no |
 | addon\_kube\_proxy\_version | Version for addon\_kube\_proxy\_version | `string` | `"v1.21.2-eksbuild.2"` | no |
 | addon\_tags | Cluster addon tags | `map(string)` | `{}` | no |
-| addon\_vpc\_cni\_version | Version for addon\_create\_vpc\_cni | `string` | `"v1.9.3-eksbuild.1"` | no |
+| addon\_vpc\_cni\_version | Version for addon\_create\_vpc\_cni | `string` | `"v1.11.2-eksbuild.1"` | no |
 | cluster\_name | Kubernetes cluster name - used to name (id) the auth0 resources | `any` | n/a | yes |
 | cluster\_oidc\_issuer\_url | Used to create the IAM OIDC role | `string` | `""` | no |
 | eks\_cluster\_id | trigger for null resource using eks\_cluster\_id | `any` | n/a | yes |

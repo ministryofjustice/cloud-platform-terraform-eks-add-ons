@@ -62,7 +62,7 @@ resource "aws_eks_addon" "vpc_cni" {
 
 # This null_resource can be removed, when "aws_eks_addon" resource support configuration for addons
 # 0r this issue https://github.com/hashicorp/terraform-provider-kubernetes/issues/723 to patch deployment
-resource "null_resource" "set_prefix_delegation_target" {
+resource "null_resource" "set_cni_env_vars" {
   depends_on = [ aws_eks_addon.vpc_cni ]
 
   provisioner "local-exec" {

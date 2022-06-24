@@ -32,7 +32,7 @@ variable "addon_vpc_cni_version" {
 }
 
 variable "addon_kube_proxy_version" {
-  default     = "v1.21.2-eksbuild.2"
+  default     = "v1.22.6-eksbuild.1"
   description = "Version for addon_kube_proxy_version"
   type = string
 }

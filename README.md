@@ -25,48 +25,51 @@ module "aws_eks_addons" {
 
 | Name | Version |
 |------|---------|
-| terraform | >= 0.14 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.14 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| aws | n/a |
-| null | n/a |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | n/a |
+| <a name="provider_null"></a> [null](#provider\_null) | n/a |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| irsa_vpc_cni | terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc | 4.6.0 |
+| <a name="module_irsa_vpc_cni"></a> [irsa\_vpc\_cni](#module\_irsa\_vpc\_cni) | terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc | 4.6.0 |
 
 ## Resources
 
-| Name |
-|------|
-| [aws_eks_addon](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eks_addon) |
-| [aws_iam_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) |
-| [aws_iam_policy_document](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) |
-| [null_resource](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) |
+| Name | Type |
+|------|------|
+| [aws_eks_addon.coredns](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eks_addon) | resource |
+| [aws_eks_addon.kube_proxy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eks_addon) | resource |
+| [aws_eks_addon.vpc_cni](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eks_addon) | resource |
+| [aws_iam_policy.vpc_cni](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
+| [null_resource.more_coredns_pods](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
+| [null_resource.set_prefix_delegation_target](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
+| [aws_iam_policy_document.vpc_cni](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| addon\_coredns\_version | Version for addon\_coredns\_version | `string` | `"v1.8.4-eksbuild.1"` | no |
-| addon\_create\_coredns | Create coredns addon | `bool` | `true` | no |
-| addon\_create\_kube\_proxy | Create kube\_proxy addon | `bool` | `true` | no |
-| addon\_create\_vpc\_cni | Create vpc\_cni addon | `bool` | `true` | no |
-| addon\_kube\_proxy\_version | Version for addon\_kube\_proxy\_version | `string` | `"v1.21.2-eksbuild.2"` | no |
-| addon\_tags | Cluster addon tags | `map(string)` | `{}` | no |
-| addon\_vpc\_cni\_version | Version for addon\_create\_vpc\_cni | `string` | `"v1.9.3-eksbuild.1"` | no |
-| cluster\_name | Kubernetes cluster name - used to name (id) the auth0 resources | `any` | n/a | yes |
-| cluster\_oidc\_issuer\_url | Used to create the IAM OIDC role | `string` | `""` | no |
-| eks\_cluster\_id | trigger for null resource using eks\_cluster\_id | `any` | n/a | yes |
+| <a name="input_addon_coredns_version"></a> [addon\_coredns\_version](#input\_addon\_coredns\_version) | Version for addon\_coredns\_version | `string` | `"v1.8.7-eksbuild.1"` | no |
+| <a name="input_addon_create_coredns"></a> [addon\_create\_coredns](#input\_addon\_create\_coredns) | Create coredns addon | `bool` | `true` | no |
+| <a name="input_addon_create_kube_proxy"></a> [addon\_create\_kube\_proxy](#input\_addon\_create\_kube\_proxy) | Create kube\_proxy addon | `bool` | `true` | no |
+| <a name="input_addon_create_vpc_cni"></a> [addon\_create\_vpc\_cni](#input\_addon\_create\_vpc\_cni) | Create vpc\_cni addon | `bool` | `true` | no |
+| <a name="input_addon_kube_proxy_version"></a> [addon\_kube\_proxy\_version](#input\_addon\_kube\_proxy\_version) | Version for addon\_kube\_proxy\_version | `string` | `"v1.22.11-eksbuild.2"` | no |
+| <a name="input_addon_tags"></a> [addon\_tags](#input\_addon\_tags) | Cluster addon tags | `map(string)` | `{}` | no |
+| <a name="input_addon_vpc_cni_version"></a> [addon\_vpc\_cni\_version](#input\_addon\_vpc\_cni\_version) | Version for addon\_create\_vpc\_cni | `string` | `"v1.11.4-eksbuild.1"` | no |
+| <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | Kubernetes cluster name - used to name (id) the auth0 resources | `any` | n/a | yes |
+| <a name="input_cluster_oidc_issuer_url"></a> [cluster\_oidc\_issuer\_url](#input\_cluster\_oidc\_issuer\_url) | Used to create the IAM OIDC role | `string` | `""` | no |
+| <a name="input_eks_cluster_id"></a> [eks\_cluster\_id](#input\_eks\_cluster\_id) | trigger for null resource using eks\_cluster\_id | `any` | n/a | yes |
 
 ## Outputs
 
-No output.
+No outputs.
 
 <!--- END_TF_DOCS --->
 

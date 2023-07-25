@@ -48,7 +48,8 @@ resource "aws_eks_addon" "vpc_cni" {
 
   cluster_name             = var.eks_cluster_id
   addon_name               = "vpc-cni"
-  resolve_conflicts        = "OVERWRITE"
+  resolve_conflicts_on_create = "OVERWRITE"
+  resolve_conflicts_on_update = "PRESERVE"
   addon_version            = var.addon_vpc_cni_version
   service_account_role_arn = module.irsa_vpc_cni.iam_role_arn
 
@@ -86,7 +87,8 @@ resource "aws_eks_addon" "kube_proxy" {
 
   cluster_name      = var.eks_cluster_id
   addon_name        = "kube-proxy"
-  resolve_conflicts = "OVERWRITE"
+  resolve_conflicts_on_create = "OVERWRITE"
+  resolve_conflicts_on_update = "PRESERVE"
   addon_version     = var.addon_kube_proxy_version
 
   tags = var.addon_tags
@@ -101,7 +103,8 @@ resource "aws_eks_addon" "coredns" {
 
   cluster_name      = var.eks_cluster_id
   addon_name        = "coredns"
-  resolve_conflicts = "OVERWRITE"
+  resolve_conflicts_on_create = "OVERWRITE"
+  resolve_conflicts_on_update = "PRESERVE"
   addon_version     = var.addon_coredns_version
 
   tags = var.addon_tags

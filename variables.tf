@@ -38,7 +38,7 @@ variable "addon_kube_proxy_version" {
 }
 
 variable "addon_coredns_version" {
-  default     = "v1.9.3-eksbuild.7"
+  default     = "v1.9.3-eksbuild.9"
   description = "Version for addon_coredns_version"
   type = string
 }

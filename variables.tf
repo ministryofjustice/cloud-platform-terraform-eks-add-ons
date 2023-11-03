@@ -26,7 +26,7 @@ variable "addon_create_coredns" {
 }
 
 variable "addon_vpc_cni_version" {
-  default     = "v1.15.0-eksbuild.2"
+  default     = "v1.15.1-eksbuild.1"
   description = "Version for addon_create_vpc_cni"
   type = string
 }

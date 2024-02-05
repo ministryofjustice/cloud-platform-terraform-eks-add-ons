@@ -123,10 +123,14 @@ resource "aws_eks_addon" "coredns" {
 resource "null_resource" "more_coredns_pods" {
   depends_on = [aws_eks_addon.coredns]
 
+  triggers = {
+    always_run = "${timestamp()}"
+  }
+
   provisioner "local-exec" {
     command = <<-EOT
       aws eks --region eu-west-2 update-kubeconfig --name ${var.cluster_name}
-      count=$(kubectl get nodes | grep Ready | wc -l) ; let count/=5 ; [ $count -lt 2 ] && count=2
+      count=$(kubectl get nodes | grep Ready | wc -l) ; let count/=5 ; [ $count -lt 3 ] && count=3
       kubectl -n kube-system scale deployment coredns --replicas=$count
     EOT
   }

@@ -8,7 +8,7 @@ module "irsa_vpc_cni" {
   create_role                   = var.addon_create_vpc_cni ? true : false
   role_name                     = "${var.cluster_name}-vpc-cni"
   provider_url                  = var.cluster_oidc_issuer_url
-  role_policy_arns              = var.addon_create_vpc_cni && length(aws_iam_policy.vpc_cni.*) >=1 ? concat(aws_iam_policy.vpc_cni.*.arn, ["arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"]) : [""]
+  role_policy_arns              = var.addon_create_vpc_cni && length(aws_iam_policy.vpc_cni.*) >= 1 ? concat(aws_iam_policy.vpc_cni.*.arn, ["arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"]) : [""]
   oidc_fully_qualified_subjects = ["system:serviceaccount:kube-system:aws-node"]
 }
 
@@ -46,12 +46,12 @@ data "aws_iam_policy_document" "vpc_cni" {
 resource "aws_eks_addon" "vpc_cni" {
   count = var.addon_create_vpc_cni ? 1 : 0
 
-  cluster_name             = var.eks_cluster_id
-  addon_name               = "vpc-cni"
+  cluster_name                = var.eks_cluster_id
+  addon_name                  = "vpc-cni"
   resolve_conflicts_on_create = "OVERWRITE"
   resolve_conflicts_on_update = "PRESERVE"
-  addon_version            = var.addon_vpc_cni_version
-  service_account_role_arn = module.irsa_vpc_cni.iam_role_arn
+  addon_version               = var.addon_vpc_cni_version
+  service_account_role_arn    = module.irsa_vpc_cni.iam_role_arn
 
   lifecycle {
     ignore_changes = [cluster_name, addon_name]
@@ -64,7 +64,7 @@ resource "aws_eks_addon" "vpc_cni" {
 # This null_resource can be removed, when "aws_eks_addon" resource support configuration for addons
 # 0r this issue https://github.com/hashicorp/terraform-provider-kubernetes/issues/723 to patch deployment
 resource "null_resource" "set_prefix_delegation_target" {
-  depends_on = [ aws_eks_addon.vpc_cni ]
+  depends_on = [aws_eks_addon.vpc_cni]
 
   provisioner "local-exec" {
     command = <<-EOT
@@ -85,11 +85,11 @@ resource "null_resource" "set_prefix_delegation_target" {
 resource "aws_eks_addon" "kube_proxy" {
   count = var.addon_create_kube_proxy ? 1 : 0
 
-  cluster_name      = var.eks_cluster_id
-  addon_name        = "kube-proxy"
+  cluster_name                = var.eks_cluster_id
+  addon_name                  = "kube-proxy"
   resolve_conflicts_on_create = "OVERWRITE"
   resolve_conflicts_on_update = "PRESERVE"
-  addon_version     = var.addon_kube_proxy_version
+  addon_version               = var.addon_kube_proxy_version
 
   tags = var.addon_tags
 }
@@ -101,11 +101,15 @@ resource "aws_eks_addon" "kube_proxy" {
 resource "aws_eks_addon" "coredns" {
   count = var.addon_create_coredns ? 1 : 0
 
-  cluster_name      = var.eks_cluster_id
-  addon_name        = "coredns"
+  cluster_name                = var.eks_cluster_id
+  addon_name                  = "coredns"
   resolve_conflicts_on_create = "OVERWRITE"
   resolve_conflicts_on_update = "OVERWRITE"
-  addon_version     = var.addon_coredns_version
+  addon_version               = var.addon_coredns_version
+
+  configuration_values = jsonencode({
+    replicaCount = 3
+  })
 
   tags = var.addon_tags
 }
@@ -117,7 +121,7 @@ resource "aws_eks_addon" "coredns" {
 # 5 is very much a magic number obtained by manual editing and watching the graph at
 # https://grafana.live.cloud-platform.service.justice.gov.uk/d/vkQ0UHxik/coredns?orgId=1
 resource "null_resource" "more_coredns_pods" {
-  depends_on = [ aws_eks_addon.coredns ]
+  depends_on = [aws_eks_addon.coredns]
 
   provisioner "local-exec" {
     command = <<-EOT

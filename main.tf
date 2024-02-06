@@ -124,7 +124,7 @@ resource "null_resource" "more_coredns_pods" {
   depends_on = [aws_eks_addon.coredns]
 
   triggers = {
-    always_run = "${timestamp()}"
+    always_run = var.addon_coredns_version
   }
 
   provisioner "local-exec" {

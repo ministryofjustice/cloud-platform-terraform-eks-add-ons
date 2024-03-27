@@ -26,19 +26,19 @@ variable "addon_create_coredns" {
 }
 
 variable "addon_vpc_cni_version" {
-  default     = "v1.16.4-eksbuild.2"
+  default     = "v1.17.1-eksbuild.1"
   description = "Version for addon_create_vpc_cni"
   type        = string
 }
 
 variable "addon_kube_proxy_version" {
-  default     = "v1.26.13-eksbuild.2"
+  default     = "v1.27.10-eksbuild.2"
   description = "Version for addon_kube_proxy_version"
   type        = string
 }
 
 variable "addon_coredns_version" {
-  default     = "v1.9.3-eksbuild.11"
+  default     = "v1.10.1-eksbuild.7"
   description = "Version for addon_coredns_version"
   type        = string
 }

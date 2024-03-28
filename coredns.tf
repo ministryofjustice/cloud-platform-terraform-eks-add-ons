@@ -34,7 +34,7 @@ resource "null_resource" "more_coredns_pods" {
   provisioner "local-exec" {
     command = <<-EOT
       aws eks --region eu-west-2 update-kubeconfig --name ${var.cluster_name}
-      count=$(kubectl get nodes | grep Ready | wc -l) ; let count/=5 ; [ $count -lt 3 ] && count=3
+      count=$(kubectl get nodes | grep Ready | wc -l) ; count=$((count / 5)) ; [ $count -lt 3 ] && count=3
       kubectl -n kube-system scale deployment coredns --replicas=$count
     EOT
   }

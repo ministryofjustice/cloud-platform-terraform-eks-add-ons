@@ -58,6 +58,7 @@ resource "aws_eks_addon" "vpc_cni" {
       # Configure cni daemonset to support higher pod density https://docs.aws.amazon.com/eks/latest/userguide/cni-increase-ip-addresses.html
       ENABLE_PREFIX_DELEGATION = "true"
       WARM_PREFIX_TARGET       = "1"
+      ENABLE_SUBNET_DISCOVERY  = "false" # https://github.com/aws/amazon-vpc-cni-k8s/blob/8f9253e2e4452fe0e9e6a26a05675c8b7ae7a8fe/README.md?plain=1#L548
     }
   })
 

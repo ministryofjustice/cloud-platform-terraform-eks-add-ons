@@ -69,7 +69,6 @@ module "aws_eks_addons" {
 ## Outputs
 
 No outputs.
-
 <!-- END_TF_DOCS -->
 
 ## Reading Material

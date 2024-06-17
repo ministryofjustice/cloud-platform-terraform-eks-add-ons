@@ -20,7 +20,7 @@ module "aws_eks_addons" {
   addon_tags               = local.tags
 }
 ```
-<!--- BEGIN_TF_DOCS --->
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
@@ -70,7 +70,7 @@ module "aws_eks_addons" {
 
 No outputs.
 
-<!--- END_TF_DOCS --->
+<!-- END_TF_DOCS -->
 
 ## Reading Material
 https://github.com/aws/amazon-eks-add-ons-k8s

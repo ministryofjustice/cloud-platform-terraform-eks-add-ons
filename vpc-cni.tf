@@ -4,7 +4,7 @@
 
 module "irsa_vpc_cni" {
   source                        = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
-  version                       = "4.6.0"
+  version                       = "5.44.1"
   create_role                   = var.addon_create_vpc_cni ? true : false
   role_name                     = "${var.cluster_name}-vpc-cni"
   provider_url                  = var.cluster_oidc_issuer_url

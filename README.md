@@ -55,13 +55,13 @@ module "aws_eks_addons" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_addon_coredns_version"></a> [addon\_coredns\_version](#input\_addon\_coredns\_version) | Version for addon\_coredns\_version | `string` | `"v1.10.1-eksbuild.11"` | no |
+| <a name="input_addon_coredns_version"></a> [addon\_coredns\_version](#input\_addon\_coredns\_version) | Version for addon\_coredns\_version | `string` | n/a | yes |
 | <a name="input_addon_create_coredns"></a> [addon\_create\_coredns](#input\_addon\_create\_coredns) | Create coredns addon | `bool` | `true` | no |
 | <a name="input_addon_create_kube_proxy"></a> [addon\_create\_kube\_proxy](#input\_addon\_create\_kube\_proxy) | Create kube\_proxy addon | `bool` | `true` | no |
 | <a name="input_addon_create_vpc_cni"></a> [addon\_create\_vpc\_cni](#input\_addon\_create\_vpc\_cni) | Create vpc\_cni addon | `bool` | `true` | no |
-| <a name="input_addon_kube_proxy_version"></a> [addon\_kube\_proxy\_version](#input\_addon\_kube\_proxy\_version) | Version for addon\_kube\_proxy\_version | `string` | `"v1.28.8-eksbuild.5"` | no |
+| <a name="input_addon_kube_proxy_version"></a> [addon\_kube\_proxy\_version](#input\_addon\_kube\_proxy\_version) | Version for addon\_kube\_proxy\_version | `string` | n/a | yes |
 | <a name="input_addon_tags"></a> [addon\_tags](#input\_addon\_tags) | Cluster addon tags | `map(string)` | `{}` | no |
-| <a name="input_addon_vpc_cni_version"></a> [addon\_vpc\_cni\_version](#input\_addon\_vpc\_cni\_version) | Version for addon\_create\_vpc\_cni | `string` | `"v1.18.2-eksbuild.1"` | no |
+| <a name="input_addon_vpc_cni_version"></a> [addon\_vpc\_cni\_version](#input\_addon\_vpc\_cni\_version) | Version for addon\_create\_vpc\_cni | `string` | n/a | yes |
 | <a name="input_cluster_name"></a> [cluster\_name](#input\_cluster\_name) | Kubernetes cluster name - used to name (id) the auth0 resources | `any` | n/a | yes |
 | <a name="input_cluster_oidc_issuer_url"></a> [cluster\_oidc\_issuer\_url](#input\_cluster\_oidc\_issuer\_url) | Used to create the IAM OIDC role | `string` | `""` | no |
 | <a name="input_eks_cluster_id"></a> [eks\_cluster\_id](#input\_eks\_cluster\_id) | trigger for null resource using eks\_cluster\_id | `any` | n/a | yes |
